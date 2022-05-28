@@ -1,22 +1,24 @@
 import React from 'react';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import Search_screen from "../components/Search_screen";
-import Settings from '../components/Settings';
+import {createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+import HomeStackScreen from './Navigator'
+import SettingsStackScreen from './Navigator'
+
+function TabNavigator(){
+    
     return (
-    <Tab.Navigator>
-        <Tab.Screen 
-            name = 'Search_screen'
-            component={Search_screen}/>
-        <Tab.Screen 
-            name = 'Settings'
-            component={Settings} />
-    </Tab.Navigator>
+    <NavigationContainer independent={true}>
+      <Tab.Navigator>
+        <Tab.Screen name="Home1" component={HomeStackScreen} />
+        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
     );
 }
+
+
 
 export default TabNavigator;
