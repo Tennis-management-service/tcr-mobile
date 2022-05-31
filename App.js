@@ -16,6 +16,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 // import StackNavigator from './src/student/navigation/Stack_navigation';
 import TabNavigator from './src/student/navigation/Tab_navigator';
 
+
+
 function App(){
    return(
 

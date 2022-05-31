@@ -4,16 +4,16 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-import HomeStackScreen from './Navigator'
-import SettingsStackScreen from './Navigator'
+import HomeStackNav from './HomeStackNavigation';
+import SettingsStackNav from './SettingsStackNavigation';
 
-function TabNavigator(){
+const TabNavigator = () => {
     
     return (
     <NavigationContainer independent={true}>
       <Tab.Navigator>
-        <Tab.Screen name="Home1" component={HomeStackScreen} />
-        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+        <Tab.Screen name="Home" component={HomeStackNav} />
+        <Tab.Screen name="Settings" component={SettingsStackNav} />
       </Tab.Navigator>
     </NavigationContainer>
     );
