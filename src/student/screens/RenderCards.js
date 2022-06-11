@@ -5,50 +5,49 @@ import { StyleSheet, View, TextInput, Button} from 'react-native';
 
 export const SearchScreenRenderCards = ({ navigation }) => {
     const [isLoading, setLoading] = useState(true);
+    const [isStarted, setStarted] = useState(true);
     const [name, setName] = useState();
     const [age, setAge ] = useState();
     const [data, setData] = useState([]);
+    const [err, SetErr] = useState([]);
 
-    async function fetchData () {
-        await fetch('https://jsonplaceholder.typicode.com/users',
-            {
-                method: 'GET',
-                dataType: 'json',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(response => {
-                console.log('Response -----: ', response)
-                return response;
-            })
-        
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false), 2000);
-    }
-
-    // Component to loop through data and display multiple cards
-    const cardsLoop = () => {
-
-
-        return (
-            <View>
-                
-            </View>
-        )
-    }
+    
     
 
 
     useEffect(() => {
-        console.log('mounted..');
-        setInterval(()=> {
-            setData(fetchData());
-        }, 1000);
+        const fetchData = () =>{
+            fetch('https://jsonplaceholder.typicode.com/users',
+                {
+                    method: 'GET',
+                    dataType: 'json',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => {
+                    if(res.status >=400){
+                        throw new Error("Server responds with error");
+                    }
+                    return res.json()
+                })
+                .then(response => {
+                    console.log('Response -----: ', response)
+                    setData(response);
+                    
+                },
+                err => {
+                    SetErr(err);
+                })
+            
+                .catch((error) => console.error(error))
+                .finally(() => setLoading(false), 2000);
+        };
 
-        return console.log('unmounting...');
+        fetchData();
+    
+        
     }, []);
 
 
@@ -59,7 +58,7 @@ export const SearchScreenRenderCards = ({ navigation }) => {
         <View style={[styles.container]}>
             <CoachProfileCard
                 
-                author={name}
+                author={data[0].name}
                 date='sdsd'
                 title='Coach'
                 summary='sldjfalsjasldjfaksdfh8wefhsdjkvnk'
