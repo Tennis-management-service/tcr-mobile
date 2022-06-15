@@ -4,9 +4,6 @@ import { Block, Text } from 'galio-framework';
 
 export const CoachProfileCard = (props) => {
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(data => console.log(data));
 
     return(
         
