@@ -15,6 +15,7 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import StackNavigator from './src/student/navigation/Stack_navigation';
 import TabNavigator from './src/student/navigation/Tab_navigator';
+import { NativeBaseProvider } from 'native-base';
 
 
 
@@ -23,11 +24,13 @@ function App(){
 
     Platform.OS === 'ios' ?
 
+  
       <NavigationContainer>
         <SafeAreaView>
           <TabNavigator/>
         </SafeAreaView>
       </NavigationContainer>
+     
       :
       <NavigationContainer>
           <TabNavigator/>
