@@ -1,28 +1,29 @@
 import React from "react";
-import { StyleSheet, Image, View, TextInput, Button} from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity} from 'react-native';
 import { Block, Text } from 'galio-framework';
+import { CoachProfile } from "./CoachProfile";
 
-export const CoachProfileCard = (props) => {
+export const CoachProfileCard = ({navigation}, props) => {
 
 
     return(
         
         <View> 
-        <Block style={[styles.card]}>
-            <Block row space='between'>
-                <Block row>
-                    {/* <Image style={styles.avatar} source={{uri:props.avatar}} /> */}
-                    <Block style={{ paddingLeft: 8 }}>
-                        <Text size={14}>{props.author}</Text>
-                        <Text size={14}>{props.date}</Text>
+            <Block style={[styles.card]}>
+                <Block row space='between'>
+                    <Block row>
+                        {/* <Image style={styles.avatar} source={{uri:props.avatar}} /> */}
+                        <Block style={{ paddingLeft: 8 }}>
+                            <Text size={14}>{props.author}</Text>
+                            <Text size={14}>{props.date}</Text>
+                        </Block>
                     </Block>
                 </Block>
+                <Block style={{ paddingTop: 8, paddingBottom: 5}}>
+                    <Text size={16}>{props.title}</Text>
+                    <Text size={16}>{props.summary}</Text>
+                </Block>
             </Block>
-            <Block style={{ paddingTop: 8 }}>
-                <Text size={16}>{props.title}</Text>
-                <Text size={16}>{props.summary}</Text>
-            </Block>
-        </Block><Text style={[styles.texts]}>This is SearchScreenRender</Text>
         </View> 
         
     )

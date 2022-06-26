@@ -6,7 +6,8 @@ import { StyleSheet, View, TextInput, Button} from 'react-native';
 import { Block, Text, Card } from 'galio-framework';
 import { CoachProfileCard } from '../components/CoachProfileCard';
 import { SearchScreenRenderCards } from '../screens/RenderCards';
-import { NativeBaseProvider } from 'native-base/src';
+import { CoachProfile } from '../components/CoachProfile';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -47,13 +48,21 @@ const HomeStackNav = () => {
                 
                 <Stack.Screen name='Search' component={SearchScreen} />
                 <Stack.Screen name='Render' component={SearchScreenRenderCards} />
-                <Stack.Screen name='DisplayCard' component={SearchScreenDisplayCard} />
+                <Stack.Screen name='CoachProfileCard' component={CoachProfileCard} />
+                <Stack.Screen name='Profile' component={CoachProfile} />
                 
             </Stack.Navigator>
         
     );
 };
 
+// const SearchScreenStackNav = () => {
+//     return(
+//         <Stack.Navigator>
+//             <Stack.Screen name='Render'
+//         </Stack.Navigator>
+//     )
+// }
 
 export default HomeStackNav;
 

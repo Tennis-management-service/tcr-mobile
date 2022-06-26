@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import { CoachProfileCard } from '../components/CoachProfileCard';
-import { StyleSheet, View, Text, FlatList, List, TextInput, Button} from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -24,7 +24,7 @@ export const SearchScreenRenderCards = ({ navigation }) => {
 
         })
         .then((response) => {
-            console.log(response.data);
+            console.log('Response:  ', response.data);
             return setData(response.data);
         })
         .then(() => {
@@ -46,14 +46,7 @@ export const SearchScreenRenderCards = ({ navigation }) => {
      
     },[]);
 
-    
-    const listedItems = [
-        {name:"hana", email:"sdsd@sdds"},
-        {name:"jogn", email:"sdsdd@sdds"}
-    ]
-    // const listItems = userData.map(item=>{
-    //     <Text key={item.name}>Hello {item.name}</Text>
-    // })
+
 
     return(
       <View style={styles.container}>
@@ -64,16 +57,23 @@ export const SearchScreenRenderCards = ({ navigation }) => {
             showsHorizontalScrollIndicator={false}
             renderItem={({item}) => {
               return(
-            <View style={styles.flatview}>
-                <Text style={styles.h2text}>Hello World</Text>
-                <Text style={styles.name}>Hello {item.name}</Text>
-                <Text style={styles.email}>Hello {item.email}</Text>
-            </View>
-              )
-            }}
-    
-            keyExtractor={(item) => item.email}  
-        />  
+                <TouchableOpacity
+                onPress={() => navigation.navigate('Profile', { name:item.name})}>
+                
+           
+                <CoachProfileCard 
+                  author={item.name}
+                  date={item.email}
+                  title={item.address.city}
+                  />
+                  </TouchableOpacity>
+                
+
+                  )
+                }}
+        
+                keyExtractor={(item) => item.email}  
+                />  
   
         
         
