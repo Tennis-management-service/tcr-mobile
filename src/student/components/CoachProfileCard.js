@@ -3,7 +3,7 @@ import { StyleSheet, Image, View, TouchableOpacity} from 'react-native';
 import { Block, Text } from 'galio-framework';
 import { CoachProfile } from "./CoachProfile";
 
-export const CoachProfileCard = ({navigation}, props) => {
+export const CoachProfileCard = (props) => {
 
 
     return(
