@@ -16,33 +16,43 @@ export const SearchScreenRenderCards = ({ navigation }) => {
     const dummyDataUsers = 'https://jsonplaceholder.typicode.com/users';
     
     const axiosFetch =  async (options) => {
-       
-
-        await axios({
+        setLoading(true);
+      
+        try{
+        const {data: response } = await axios({
             method: 'GET',
             url: dummyDataUsers,
 
         })
-        .then((response) => {
-            console.log('Response:  ', response.data);
-            return setData(response.data);
-        })
-        .then(() => {
-            console.log("Data:   ", JSON.stringify(data[0]));
+        console.log('Response: ', response);
+        setData(response);
+      } catch (error) {
+        console.error(error.message);
+      }
+      setLoading(false);
+        // .then((response) => {
+        //     console.log('Response:  ', response.data);
+        //     setData(response.data);
+        // })
+        // .then(() => {
+        //     console.log("Data:   ", JSON.stringify(data[0]));
             
-        })
-        .catch((error)=> {
-            console.error(error);
-        })
+        // })
+        // .catch((error)=> {
+        //     console.error(error);
+        // })
         
         
     }
 
 
     useEffect(() => {
-    
+      
+        
         axiosFetch();
         
+
+        console.log('Data: ', data);
      
     },[]);
 
@@ -56,9 +66,15 @@ export const SearchScreenRenderCards = ({ navigation }) => {
             data={data}
             showsHorizontalScrollIndicator={false}
             renderItem={({item}) => {
+              const name = item.name;
+              const email = item.email;
+              
               return(
                 <TouchableOpacity
-                onPress={() => navigation.navigate('Profile', { name:item.name})}>
+                onPress={ () => navigation.navigate('Profile', {
+                  name:name,
+                  email:email
+                  })}>
                 
            
                 <CoachProfileCard 
