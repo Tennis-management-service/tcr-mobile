@@ -49,7 +49,10 @@ const HomeStackNav = () => {
                 <Stack.Screen name='Search' component={SearchScreen} />
                 <Stack.Screen name='Render' component={SearchScreenRenderCards} />
                 <Stack.Screen name='CoachProfileCard' component={CoachProfileCard} />
-                <Stack.Screen name='Profile' component={CoachProfile} />
+                <Stack.Screen 
+                    name='Profile' 
+                    component={CoachProfile}
+                    options={{email: 'Spyros'}} />
                 
             </Stack.Navigator>
         
