@@ -8,18 +8,21 @@
 
  import * as React from 'react';
  import { NavigationContainer } from '@react-navigation/native';
- import { Platform } from 'react-native';
+ import { Platform} from 'react-native';
 
 // Import navigators
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import StackNavigator from './src/student/navigation/Stack_navigation';
-import TabNavigator from './src/student/navigation/Tab_navigator';
+import TabNavigator from './src/student/navigation/TabNavigator';
 import { NativeBaseProvider } from 'native-base';
 
 
 
 function App(){
+
+  
+
    return(
 
     Platform.OS === 'ios' ?

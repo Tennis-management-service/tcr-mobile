@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 // Import navigation 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

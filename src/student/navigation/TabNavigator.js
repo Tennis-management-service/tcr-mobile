@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-import HomeStackNav from './HomeStackNavigation';
-import SettingsStackNav from './SettingsStackNavigation';
+import HomeStackNav from './HomeStackNavigator';
+import SettingsStackNav from './SettingsStackNavigator';
 
 const TabNavigator = () => {
     
