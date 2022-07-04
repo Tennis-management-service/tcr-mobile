@@ -6,11 +6,11 @@ import { StyleSheet, View, TextInput, Button} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-export default HomeStackNav = () => {
+export default StudnetStackNav = () => {
 
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='Students'>
         <Stack.Screen
-            name='Home'
+            name='Studnets'
            
             />
     </Stack.Navigator>
