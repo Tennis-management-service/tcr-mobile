@@ -14,30 +14,45 @@
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import StackNavigator from './src/student/navigation/Stack_navigation';
-import TabNavigator from './src/student/navigation/TabNavigator';
+import StudentTabNavigator from './src/student/navigation/StudentTabNavigator';
+import CoachTabNavigator from './src/coach/navigation/CoachTabNavigator';
+
 import { NativeBaseProvider } from 'native-base';
 
 
 
 function App(){
 
-  
+  const user = 'coach';
 
    return(
 
     Platform.OS === 'ios' ?
 
-  
-      <NavigationContainer>
+      user === 'student' ?
+        <NavigationContainer>
+          <SafeAreaView>
+            <StudentTabNavigator/>
+          </SafeAreaView>
+        </NavigationContainer>
+
+        :
+        <NavigationContainer>
         <SafeAreaView>
-          <TabNavigator/>
+          <CoachTabNavigator/>
         </SafeAreaView>
-      </NavigationContainer>
+        </NavigationContainer>
      
       :
-      <NavigationContainer>
-          <TabNavigator/>
-      </NavigationContainer>
+
+      user === 'student' ?
+        <NavigationContainer>
+            <StudentTabNavigator/>
+        </NavigationContainer>
+      :
+        <NavigationContainer>
+          <CoachTabNavigator/>
+        </NavigationContainer>
     
    );  
  }
