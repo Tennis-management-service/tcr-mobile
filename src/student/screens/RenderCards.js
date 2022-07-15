@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 
-export const SearchScreenRenderCards = ({ navigation }) => {
+export const RenderCards = ({ navigation }) => {
 
     const [isLoading, setLoading] = useState(true);
     const [isStarted, setStarted] = useState(true);
@@ -84,7 +84,7 @@ export const SearchScreenRenderCards = ({ navigation }) => {
                   />
                   </TouchableOpacity>
                 
-
+ 
                   )
                 }}
         

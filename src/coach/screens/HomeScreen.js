@@ -1,10 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
+import  {CalendarSlider}  from '../components/calendar'
+
 export const HomeScreen = () => {
   return (
     <View>
-        <Text>This is the HomeScreen</Text>
+        <CalendarSlider/>
     </View>
   )
 }
