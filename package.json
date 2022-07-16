@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --sourcemap-output android/app/src/main/assets/index.android.map --assets-dest android/app/src/main/res/"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -16,6 +17,7 @@
     "@react-navigation/native-stack": "^6.6.2",
     "axios": "^0.27.2",
     "core-js": "^3.23.4",
+    "date-fns": "^2.28.0",
     "galio-framework": "^0.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
