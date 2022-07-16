@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-import {Dimensions, Calendar, CalendarList, Agenda, LocaleConfig } from 'react-native-calendars';
+// import {Dimensions, Calendar, CalendarList, Agenda, LocaleConfig } from 'react-native-calendars';
 
-import CalendarStrip from 'react-native-slideable-calendar-strip';
+// import CalendarStrip from 'react-native-slideable-calendar-strip';
 
-let { width } = Dimensions.get('window');
+// let { width } = Dimensions.get('window');
 
 
 
@@ -19,22 +19,25 @@ export const CalendarSlider = () => {
 
     }
     
-    LocaleConfig.locales['']
+    // LocaleConfig.locales['']
 return (
-    <View style={styles.container}>
-        <CalendarStrip isEnglish showWeekNumber showEnglishLunar
-        selectedDate={this.state.selectedDate} onPressDate={(date) => { this.setState({ selectedDate: date });
-        }}
-        onPressGoToday={(today) => { this.setState({ selectedDate: today });
-        }}
-        onSwipeDown={() => { alert('onSwipeDown');
-        }}
-        markedDate={['2020-03-04', '2020-03-15', '2020-03-04', '2020-03-01']}
-        weekStartsOn={1}
-        />
-        <View>
-        </View>
+    <View>
+        <Text>Hello Coach</Text>
     </View>
+    // <View style={styles.container}>
+    //     <CalendarStrip isEnglish showWeekNumber showEnglishLunar
+    //     selectedDate={this.state.selectedDate} onPressDate={(date) => { this.setState({ selectedDate: date });
+    //     }}
+    //     onPressGoToday={(today) => { this.setState({ selectedDate: today });
+    //     }}
+    //     onSwipeDown={() => { alert('onSwipeDown');
+    //     }}
+    //     markedDate={['2020-03-04', '2020-03-15', '2020-03-04', '2020-03-01']}
+    //     weekStartsOn={1}
+    //     />
+    //     <View>
+    //     </View>
+    // </View>
 );
 }
 
