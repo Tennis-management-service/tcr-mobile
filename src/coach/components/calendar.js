@@ -129,8 +129,9 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Calendar, CalendarList } from 'react-native-calendars';
-import {format, subWeeks, addWeeks, lastDayOfMonth, isFirstDayOfMonth} from 'date-fns';
+import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {format, startOfMonth, addYears} from 'date-fns';
+import { color } from 'react-native-reanimated';
 
 
 const formatt = (date) => format(date, 'MM/dd/yyyy');
@@ -169,16 +170,34 @@ export const CalendarComponent = () => {
 
   return (
     <View style={styles.container}>
-      <Calendar
-        initialDate={formatt(baseDate)}
-        minDate={1}
-        maxDate={lastDayOfMonth(baseDate)}
+      <Agenda
         
-        
-        markedDates={getMarkedDates(baseDate, APPOINTMENTS)}
-        theme={{
-         
+        items={{
+            '2022-07-13': [{name: 'item1'}, {name: 'Item1.1'}],
+            '2022-07-18': [{name: 'item2', height: 80}]
         }}
+        loadItemsForMonth={(month) => {console.log('trigger items loading')}}
+        minDate={'2022-01-15'}
+        maxDate={'2023-01-15'}
+        
+        //initialDate={formatt(baseDate)}
+        // In minDate we need to put the date a coach signed up with the app. 
+        // Currently, it shows as minDate the first of the current month. 
+        // minDate={formatt(startOfMonth(baseDate))}
+        // maxDate={formatt(addYears(baseDate, 1))}
+        
+        // markingType={'multi-dot'}
+        // markedDates={{
+        //     '2022-07-18': { marked: true }
+        // }
+        // }
+
+        
+        // theme={{
+        //     textDayHeaderFontSize: 15,
+        //     todayTextColor: '#dec018',
+        //     selectedDayBackgroundColor: '#dec018'
+        // }}
 
       />
     </View>
@@ -187,7 +206,8 @@ export const CalendarComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#166010',
-    justifyContent: 'center',
+    height: 600
+    // backgroundColor: '#166010',
+    // justifyContent: 'center',
   },
 });
