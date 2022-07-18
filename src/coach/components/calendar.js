@@ -134,7 +134,7 @@ import {format, startOfMonth, addYears} from 'date-fns';
 import { color } from 'react-native-reanimated';
 
 
-const formatt = (date) => format(date, 'MM/dd/yyyy');
+const formatt = (date) => format(date, 'yyyy-MM-dd');
 const getMarkedDates = (baseDate, appointments) => {
   const markedDates = {};
 
@@ -151,8 +151,30 @@ const getMarkedDates = (baseDate, appointments) => {
   return markedDates;
 };
 
+
+const getMarkedDatess = (appointmentss) => {
+
+    const markedDates = {};
+
+    
+    appointmentss.forEach((appointment) => {
+        const date = new Date(appointment.date);
+        console.log('Date:  ', date);
+        const formattedDate = formatt(date);
+        console.log('Formatted Date  ', formattedDate);
+        markedDates[formattedDate] = {
+            ...markedDates[formattedDate],
+            marked: true,
+        };
+    });
+
+    return markedDates;
+}
+
+
+
 export const CalendarComponent = () => {
-  const baseDate = new Date();
+   
   const APPOINTMENTS = [
     {
       date: '2022-06-13T05:00:00.000Z',
@@ -168,37 +190,30 @@ export const CalendarComponent = () => {
     },
   ];
 
+  console.log(getMarkedDatess(APPOINTMENTS));
+
+  const markedDates = getMarkedDatess(APPOINTMENTS);
   return (
     <View style={styles.container}>
       <Agenda
         
         items={{
             '2022-07-13': [{name: 'item1'}, {name: 'Item1.1'}],
+            '2022-07-13': [{name: 'item1'}, {name: 'Item1.1'}],
             '2022-07-18': [{name: 'item2', height: 80}]
         }}
         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
         minDate={'2022-01-15'}
         maxDate={'2023-01-15'}
-        
-        //initialDate={formatt(baseDate)}
-        // In minDate we need to put the date a coach signed up with the app. 
-        // Currently, it shows as minDate the first of the current month. 
-        // minDate={formatt(startOfMonth(baseDate))}
-        // maxDate={formatt(addYears(baseDate, 1))}
-        
-        // markingType={'multi-dot'}
-        // markedDates={{
-        //     '2022-07-18': { marked: true }
-        // }
-        // }
+        pastScrollRange={12}
+        futureScrollRange={12}
 
+        markedDates={markedDates}
+      
+        theme={{
+            
+        }}
         
-        // theme={{
-        //     textDayHeaderFontSize: 15,
-        //     todayTextColor: '#dec018',
-        //     selectedDayBackgroundColor: '#dec018'
-        // }}
-
       />
     </View>
   );
@@ -206,8 +221,8 @@ export const CalendarComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 600
-    // backgroundColor: '#166010',
-    // justifyContent: 'center',
+    height: 600,
+    backgroundColor: '#e0c00b',
+    justifyContent: 'center',
   },
 });
