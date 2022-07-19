@@ -1,18 +1,21 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Agenda} from 'react-native-calendars';
+import { StyleSheet, View, Text } from 'react-native';
+import { Agenda, AgendaEntry} from 'react-native-calendars';
 import {format } from 'date-fns';
 
 
 
 const formatt = (date) => format(date, 'yyyy-MM-dd');
 
-const getMarkedDates = (appointmentss) => {
+
+// This function gets the date from an array of JSON objects and 
+// puts the dates in markedDates={} to be marked.
+const getMarkedDates = (appointments) => {
 
     const markedDates = {};
 
     
-    appointmentss.forEach((appointment) => {
+    appointments.forEach((appointment) => {
         const date = new Date(appointment.date);
         console.log('Date:  ', date);
         const formattedDate = formatt(date);
@@ -26,25 +29,54 @@ const getMarkedDates = (appointmentss) => {
     return markedDates;
 }
 
+// This function gets the title from an array of JSON objects and 
+// puts the title into items so they can be listed when date is clicked.
+const getItems = (items) => {
+
+    const itemsOutput = {};
+
+    items.forEach((item) => {
+        const date = new Date(item.date);
+        const formatedDate = formatt(date);
+        const title = item.name;
+        if(itemsOutput[formatedDate]){
+            itemsOutput[formatedDate].push({title});
+        }
+        else {
+            itemsOutput[formatedDate] = [];
+            itemsOutput[formatedDate].push({title});
+        }
+        
+        
+        
+    });
+
+    return itemsOutput;
+}
+
 
 
 export const CalendarComponent = () => {
    
   const APPOINTMENTS = [
     {
-      date: '2022-07-13T05:00:00.000Z',
-      title: "It's a past thing!",
+        date: '2022-07-13T05:00:00.000Z',
+        name: "It's a past thing!",
+        duration: '2'
     },
     {
-      date: '2022-07-15T05:00:00.000Z',
-      title: "It's a today thing!",
+        date: '2022-07-15T05:00:00.000Z',
+        name: "It's a today thing!",
     },
     {
-      date: '2022-07-18T05:00:00.000Z',
-      title: "It's a future thing!",
+        date: '2022-07-15T05:00:00.000Z',
+        name: "It's a future thing!",
     },
     {
         date: '2022-07-19T05:00:00.000Z'
+    },
+    {
+        date: '2022-07-10T05:00:00.000Z'
     }
   ];
 
@@ -55,12 +87,7 @@ export const CalendarComponent = () => {
     <View style={styles.container}>
       <Agenda
         
-        items={{
-            '2022-07-13': [{name: 'item1'}, {name: 'Item1.1'}],
-            '2022-07-13': [{name: 'item1'}, {name: 'Item1.1'}],
-            '2022-07-18': [{name: 'item2', height: 80}],
-            '2022-07-19': [{name: 'item4'}]
-        }}
+        items={getItems(APPOINTMENTS)}
         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
         minDate={'2022-01-15'}
         maxDate={'2023-01-15'}
@@ -68,7 +95,9 @@ export const CalendarComponent = () => {
         futureScrollRange={12}
 
         markedDates={markedDates}
-      
+        renderDay={(day, item) => {return (<View><Text>Hello world</Text></View>);}}
+        renderItem={(item, firstItemInDay) => {return (<View />);}}
+
         theme={{
             
         }}
@@ -84,4 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0c00b',
     justifyContent: 'center',
   },
+  renderBox: {
+    
+  }
 });
