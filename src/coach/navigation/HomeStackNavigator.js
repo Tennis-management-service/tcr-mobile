@@ -11,9 +11,9 @@ const Stack = createNativeStackNavigator();
 
 export default HomeStackNav = () => {
 return(
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='Calendar'>
         <Stack.Screen
-            name='Home1'
+            name='Calendar'
             component={HomeScreen}
             />
     </Stack.Navigator>

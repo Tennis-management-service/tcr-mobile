@@ -16,7 +16,7 @@ const TabNavigator = () => {
     return (
     <NavigationContainer independent={true}>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeStackNav} />
+        <Tab.Screen name="Calendar" component={HomeStackNav} />
         {/* The Home Screen will render scheduled practices.
              */}
         <Tab.Screen name="Students" component={StudentStackNav} />
