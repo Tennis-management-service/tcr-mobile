@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Image, View, TouchableOpacity} from 'react-native';
+import { StudentProfileButtonsBar } from "../components/studentProfileButtonsBar";
 import { StudentProfileImage } from "../components/studentProfileImage";
 
 export const StudentProfileScreen = ({route}) => {
@@ -7,18 +8,16 @@ export const StudentProfileScreen = ({route}) => {
     
 
     return(
-        
+        <View style={styles.container}>
         <StudentProfileImage name={name0} imageUrl={'https://reactnative.dev/img/tiny_logo.png'}/>
-        
+        <StudentProfileButtonsBar/>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#F8EDEB',
-        paddingHorizontal: 20,
-        paddingVertical: 64
     },
     card: {
         backgroundColor: '#fff',
