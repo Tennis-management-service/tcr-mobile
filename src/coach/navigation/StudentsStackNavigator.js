@@ -20,7 +20,6 @@ export default StudnetStackNav = () => {
         <Stack.Screen
             name='StudentProfile'
             component={StudentProfileScreen}
-            options={{name:'SS'}}
             />
     </Stack.Navigator>
     )
