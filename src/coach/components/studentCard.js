@@ -1,10 +1,18 @@
 import React, {useState}from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { borderRadius } from 'styled-system';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export const StudentCard = ({imageUrl, name}) => {
 
+export const StudentCard = ({imageUrl, name, navigation}) => {
+
+    // const [usename, setname] = useState('');
+    // setname(name);
   return (
+    <TouchableOpacity onPress={
+        () => {
+                navigation.navigate('StudentProfile', {
+                    userId: name,
+                })}
+            }>
     <View style={styles.container}>
             <View style={styles.imagePlacement}>
             <Image style={styles.image} source={{uri: imageUrl}} />
@@ -13,6 +21,7 @@ export const StudentCard = ({imageUrl, name}) => {
             <Text style={styles.textName} >{name}</Text>
             </View>
     </View>
+    </TouchableOpacity>
   )
 }
 
@@ -28,8 +37,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
         //Border
-        borderWidth: 1,
-        borderColor: '#f5f0df',
         borderRadius: 13,
 
         //Margin
@@ -38,7 +45,15 @@ const styles = StyleSheet.create({
         marginTop: 10,
 
         //Shadow
-        padding: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.50,
+        shadowRadius: 4.90,
+
+        elevation: 8,
         
     }, 
     image:{
