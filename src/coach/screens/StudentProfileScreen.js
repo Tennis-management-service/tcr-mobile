@@ -1,30 +1,14 @@
 import React from "react";
 import { StyleSheet, Image, View, TouchableOpacity} from 'react-native';
-import { Block, Text } from 'galio-framework';
-import { CoachProfile } from "./CoachProfile";
+import { StudentProfileImage } from "../components/studentProfileImage";
 
-export const StudentProfileScreen = (props) => {
-
+export const StudentProfileScreen = ({route}) => {
+    const name0 = route.params.userId;
+    
 
     return(
         
-        <View> 
-            <Block style={[styles.card]}>
-                <Block row space='between'>
-                    <Block row>
-                        {/* <Image style={styles.avatar} source={{uri:props.avatar}} /> */}
-                        <Block style={{ paddingLeft: 8 }}>
-                            <Text size={14}>{props.author}</Text>
-                            <Text size={14}>{props.date}</Text>
-                        </Block>
-                    </Block>
-                </Block>
-                <Block style={{ paddingTop: 8, paddingBottom: 5}}>
-                    <Text size={16}>{props.title}</Text>
-                    <Text size={16}>{props.summary}</Text>
-                </Block>
-            </Block>
-        </View> 
+        <StudentProfileImage name={name0} imageUrl={'https://reactnative.dev/img/tiny_logo.png'}/>
         
     )
 }
