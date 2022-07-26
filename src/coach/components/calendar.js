@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, FlatList, VirtualizedList, TouchableOpacity, Dimensions } from 'react-native';
 import { Agenda, AgendaEntry} from 'react-native-calendars';
 import {format, formatISO9075} from 'date-fns';
-import { render } from 'react-dom';
+import { CalendarRenderItemCard } from './calendarRenderItemCard';
 
 
 
@@ -41,12 +41,13 @@ const getItems = (items) => {
         const date = new Date(item.dateStart);
         const formatedDate = formatt(date);
         const title = item.name;
+        const id = item.id;
         if(itemsOutput[formatedDate]){
-            itemsOutput[formatedDate].push({title});
+            itemsOutput[formatedDate].push({title, id});
         }
         else {
             itemsOutput[formatedDate] = [];
-            itemsOutput[formatedDate].push({title});
+            itemsOutput[formatedDate].push({title, id});
         }
         
         
@@ -56,54 +57,75 @@ const getItems = (items) => {
     return itemsOutput;
 }
 
-const renderItems = (newItems) => {
-    const {width, height} = Dimensions.get('window')
-    const formatTime = (time) => {return formatISO9075(new Date(time), {representation: 'time'})};
+// This function searches appointments by id to find start and end 
+// date of the appointment.
+// It returns the start and end date to the renderItems function
+const getStartEndTime = (id, appointments) => {
+    let start;
+    let end;
+    appointments.forEach((item) => {
+        if(item.id == id){
+            start = item.dateStart;
+            end = item.dateEnd;
 
-    const items = [];
+            return start;
+        }else{
+            return null;
+        }
 
-    // newItems.map((item) => {
-    //     const timeStart = item.dateStart;
-    //     const timeEnd = item.dateEnd;
-    //     const startTime = formatTime(timeStart);    
-    //     const endTime = formatTime(timeEnd);
-    //     const name = item.name;
-    //     items.push({startTime, endTime, name})
-    //     console.log('S ', startTime);
-    //     console.log('E ',endTime);
-
-    //     return (
-    //         <View style={{height: 40, width: width,  paddingTop: 10, backgroundColor: 'red'}}>
-    //             <Text>{item.name}</Text>
-    //         </View>
-    //     )
-        
-    // })
-
-    return (
-        <View>
-        <FlatList   
-            style={{width: width, height: 40, margin: 10, backgroundColor: 'blue'}}
-            date={newItems}
-            renderItem={(item) => {
-                const timeStart = item.dateStart;
-                console.log('TimeStart --------:  ', timeStart);
-
-                return (
-                    
-                        <Text style={{fontSize: 25, fontWeight: 'bold'}}>Hello</Text>
-                
-                )
-            }}
-        />
-        </View>
-    )
-
-    
-    
-    
-
+    })
 }
+
+
+
+// const renderItems = (newItems) => {
+//     const {width, height} = Dimensions.get('window')
+//     const formatTime = (time) => {return formatISO9075(new Date(time), {representation: 'time'})};
+
+//     const items = [];
+
+//     // newItems.map((item) => {
+//     //     const timeStart = item.dateStart;
+//     //     const timeEnd = item.dateEnd;
+//     //     const startTime = formatTime(timeStart);    
+//     //     const endTime = formatTime(timeEnd);
+//     //     const name = item.name;
+//     //     items.push({startTime, endTime, name})
+//     //     console.log('S ', startTime);
+//     //     console.log('E ',endTime);
+
+//     //     return (
+//     //         <View style={{height: 40, width: width,  paddingTop: 10, backgroundColor: 'red'}}>
+//     //             <Text>{item.name}</Text>
+//     //         </View>
+//     //     )
+        
+//     // })
+
+//     return (
+//         <View>
+//         <FlatList   
+//             style={{width: width, height: 40, margin: 10, backgroundColor: 'blue'}}
+//             date={newItems}
+//             renderItem={(item) => {
+//                 const timeStart = item.dateStart;
+//                 console.log('TimeStart --------:  ', timeStart);
+
+//                 return (
+//                     <View>
+//                         <Text style={{fontSize: 25, fontWeight: 'bold'}}>Hello</Text>
+//                     </View>
+//                 )
+//             }}
+//         />
+//         </View>
+//     )
+
+    
+    
+    
+
+// }
 
 
 
@@ -137,19 +159,19 @@ export const CalendarComponent = () => {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abbssba',
         dateStart: '2022-07-10T08:00:00.000Z',
         dateEnd: '2022-07-10T05:00:00.000Z',
-        name: 'Spyridon'
+        name: 'Spyridon3'
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3dd53abb28ba',
         dateStart: '2022-07-10T09:00:00.000Z',
         dateEnd: '2022-07-10T05:00:00.000Z',
-        name: 'Spyridon'
+        name: 'Spyridon1'
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad522bb28ba',
         dateStart: '2022-07-20T08:00:00.000Z',
         dateEnd: '2022-07-10T05:00:00.000Z',
-        name: 'Spyridon'
+        name: 'Spyridon2'
     },
     {
         id: 'bd7acbea-c111-46c2-aed5-3ad53abb28ba',
@@ -158,7 +180,7 @@ export const CalendarComponent = () => {
         name: 'Theo'
     },
   ];
-
+  console.log('RESULTS  ',getStartEndTime('bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',APPOINTMENTS ));
   console.log('Marked:  ', getMarkedDates(APPOINTMENTS));
   console.log('Items:  ', getItems(APPOINTMENTS));
   // console.log('RenderItems:  ', renderItems(APPOINTMENTS));
@@ -177,6 +199,11 @@ export const CalendarComponent = () => {
         futureScrollRange={12}
 
         markedDates={markedDates}
+        renderItem={(item, firstItemInDay) => {
+            console.log('Item:   :  :  :   ', item);
+            return <CalendarRenderItemCard title={item.title}/>
+            
+        }}
         // renderDay={(day, item) => {
         //     return (
         //     <View><Text>Day</Text></View>
@@ -207,44 +234,44 @@ export const CalendarComponent = () => {
 
         // renderItem={renderItems(APPOINTMENTS)}
 
-        renderItem={(APPOINTMENTS) => {
-            const {width, height} = Dimensions.get('window')
-            return (
-                <View style={{marginBottom: 10}}>
-                <FlatList
-                    style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
-                    data={APPOINTMENTS}
-                    renderItem={(item) => {
+        // renderItem={(APPOINTMENTS) => {
+        //     const {width, height} = Dimensions.get('window')
+        //     return (
+        //         <View style={{marginBottom: 10}}>
+        //         <FlatList
+        //             style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
+        //             data={APPOINTMENTS}
+        //             renderItem={(item) => {
                         
-                        console.log('Item field', item.name);
-                        return (
-                            <View style={{ padding: 12, backgroundColor: 'yellow'}}>
-                                <Text style={{height: 20, margin: 2, width: 90, backgroundColor: 'blue'}}>Time / duration</Text>
-                                <Text style={{height: 20, margin: 2, width: width, backgroundColor: 'orange'}}>Name</Text>
-                            </View> 
-                        )
+        //                 console.log('Item field', item.name);
+        //                 return (
+        //                     <View style={{ margin: 12, backgroundColor: 'yellow'}}>
+        //                         <Text style={{height: 20, margin: 2, width: 90, backgroundColor: 'blue'}}>Time / duration</Text>
+        //                         <Text style={{height: 20, margin: 2, width: width, backgroundColor: 'orange'}}>Name</Text>
+        //                     </View> 
+        //                 )
                         
-                    }}
-                    keyExtractor={item => item.id}
+        //             }}
+        //             keyExtractor={item => item.id}
                     
-                    />
-                    {/* <VirtualizedList
-                        style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
-                        data={APPOINTMENTS}
-                        initialNumToRender={4}
-                        renderItem={({ item }) => {<Text>Hello World</Text>}}
-                        keyExtractor={item => item.id}
-                        getItemCount={5}
+        //             />
+        //             {/* <VirtualizedList
+        //                 style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
+        //                 data={APPOINTMENTS}
+        //                 initialNumToRender={4}
+        //                 renderItem={({ item }) => {<Text>Hello World</Text>}}
+        //                 keyExtractor={item => item.id}
+        //                 getItemCount={5}
 
                     
                         
                        
-                    /> */}
-                </View>
+        //             /> */}
+        //         </View>
                    
-            )
+        //     )
             
-        }}
+        // }}
         renderEmptyData={() => {
             return (
                 <View style={{margin: 10, backgroundColor: 'grey'}}>
@@ -276,5 +303,11 @@ const styles = StyleSheet.create({
     height: 10,
     width: 20,
     backgroundColor: 'grey'
+  },
+  flatlist:{
+    backgroundColor: 'grey',
+    margin: 10,
+    height: 200,
+    width: 140
   }
 });
