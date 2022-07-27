@@ -86,57 +86,6 @@ const getStartEndTime = (id, appointments) => {
 
 
 
-// const renderItems = (newItems) => {
-//     const {width, height} = Dimensions.get('window')
-//     const formatTime = (time) => {return formatISO9075(new Date(time), {representation: 'time'})};
-
-//     const items = [];
-
-//     // newItems.map((item) => {
-//     //     const timeStart = item.dateStart;
-//     //     const timeEnd = item.dateEnd;
-//     //     const startTime = formatTime(timeStart);    
-//     //     const endTime = formatTime(timeEnd);
-//     //     const name = item.name;
-//     //     items.push({startTime, endTime, name})
-//     //     console.log('S ', startTime);
-//     //     console.log('E ',endTime);
-
-//     //     return (
-//     //         <View style={{height: 40, width: width,  paddingTop: 10, backgroundColor: 'red'}}>
-//     //             <Text>{item.name}</Text>
-//     //         </View>
-//     //     )
-        
-//     // })
-
-//     return (
-//         <View>
-//         <FlatList   
-//             style={{width: width, height: 40, margin: 10, backgroundColor: 'blue'}}
-//             date={newItems}
-//             renderItem={(item) => {
-//                 const timeStart = item.dateStart;
-//                 console.log('TimeStart --------:  ', timeStart);
-
-//                 return (
-//                     <View>
-//                         <Text style={{fontSize: 25, fontWeight: 'bold'}}>Hello</Text>
-//                     </View>
-//                 )
-//             }}
-//         />
-//         </View>
-//     )
-
-    
-    
-    
-
-// }
-
-
-
 export const CalendarComponent = () => {
    
   const APPOINTMENTS = [
@@ -213,74 +162,7 @@ export const CalendarComponent = () => {
             return <CalendarRenderItemCard startTime={result.start} endTime={result.end} title={item.title}/>
             
         }}
-        // renderDay={(day, item) => {
-        //     return (
-        //     <View><Text>Day</Text></View>
-        //     )
-        // }}
-        // renderItem={() => {
-        //     return(
-        //         <View>
-        //             <FlatList
-        //                 style={{height: '100%', paddingTop: 20}}
-        //                 data={APPOINTMENTS}
-        //                 renderItem={(item) => {
-        //                     const timeStart = formatISO9075(item.dateStart);
-        //                     console.log(' Time Start: ', timeStart);
-        //                     const timeEnd = formatISO9075(item.dateEnd);
-
-        //                     return (
-        //                         <View style={{height: 40, width: width,  paddingTop: 10, backgroundColor: 'red'}}>
-        //                             <Text>Hello This is FlatList</Text>
-        //                         </View>
-        //                     )
-        //                 }}
-                        
-        //             />
-        //         </View>
-        //     )
-        // }}
-
-        // renderItem={renderItems(APPOINTMENTS)}
-
-        // renderItem={(APPOINTMENTS) => {
-        //     const {width, height} = Dimensions.get('window')
-        //     return (
-        //         <View style={{marginBottom: 10}}>
-        //         <FlatList
-        //             style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
-        //             data={APPOINTMENTS}
-        //             renderItem={(item) => {
-                        
-        //                 console.log('Item field', item.name);
-        //                 return (
-        //                     <View style={{ margin: 12, backgroundColor: 'yellow'}}>
-        //                         <Text style={{height: 20, margin: 2, width: 90, backgroundColor: 'blue'}}>Time / duration</Text>
-        //                         <Text style={{height: 20, margin: 2, width: width, backgroundColor: 'orange'}}>Name</Text>
-        //                     </View> 
-        //                 )
-                        
-        //             }}
-        //             keyExtractor={item => item.id}
-                    
-        //             />
-        //             {/* <VirtualizedList
-        //                 style={{ width: 200, margin: 5,  backgroundColor: 'red', border: 1, borderRadius: 6}}
-        //                 data={APPOINTMENTS}
-        //                 initialNumToRender={4}
-        //                 renderItem={({ item }) => {<Text>Hello World</Text>}}
-        //                 keyExtractor={item => item.id}
-        //                 getItemCount={5}
-
-                    
-                        
-                       
-        //             /> */}
-        //         </View>
-                   
-        //     )
-            
-        // }}
+        
         renderEmptyData={() => {
             return (
                 <View style={{margin: 10, backgroundColor: 'grey'}}>
