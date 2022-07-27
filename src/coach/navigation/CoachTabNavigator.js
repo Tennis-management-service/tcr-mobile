@@ -11,8 +11,6 @@ import ClubStackNav from './ClubStackNavigator'
 import { NotificationsScreen } from '../screens/NotificationsScreen';
 import { ProfileStackNav } from './ProfileStackNav';
 
-import CalendarMonth from '@mui/icons-material/CalendarMonth';
-
 
 const TabNavigator = () => {
     
@@ -22,9 +20,9 @@ const TabNavigator = () => {
         <Tab.Screen 
             name="Calendar"  
             component={HomeStackNav}
-            options={{
-              tabBarIcon: () => (<CalendarMonth />)
-            }} 
+            // options={{
+            //   tabBarIcon: () => ()
+            // }} 
             />
         {/* The Home Screen will render scheduled practices. */}
         <Tab.Screen name="Students" component={StudentStackNav} />
