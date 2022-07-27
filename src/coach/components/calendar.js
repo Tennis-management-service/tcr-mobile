@@ -64,16 +64,24 @@ const getStartEndTime = (id, appointments) => {
     let start;
     let end;
     appointments.forEach((item) => {
-        if(item.id == id){
+        console.log('Item -------> ', item);
+        
+        const item_id = JSON.stringify(item.id);
+        const id_ = JSON.stringify(id);
+        
+        console.log('Item id', item_id)
+        if(item_id == id_){
             start = item.dateStart;
             end = item.dateEnd;
 
-            return start;
-        }else{
-            return null;
+            
         }
 
     })
+    const formatTime = (time) => {return formatISO9075(new Date(time), {representation: 'time'})};
+    start = formatTime(start);
+    end = formatTime(end);
+    return {start, end};
 }
 
 
@@ -134,7 +142,7 @@ export const CalendarComponent = () => {
   const APPOINTMENTS = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        dateStart: '2022-07-13T04:00:00.000Z',
+        dateStart: '2022-07-13T04:30:00.000Z',
         dateEnd: '2022-07-13T05:00:00.000Z',
         name: "It's a past thing!",
     },
@@ -201,7 +209,8 @@ export const CalendarComponent = () => {
         markedDates={markedDates}
         renderItem={(item, firstItemInDay) => {
             console.log('Item:   :  :  :   ', item);
-            return <CalendarRenderItemCard title={item.title}/>
+            const result = getStartEndTime(item.id,APPOINTMENTS )
+            return <CalendarRenderItemCard startTime={result.start} endTime={result.end} title={item.title}/>
             
         }}
         // renderDay={(day, item) => {
