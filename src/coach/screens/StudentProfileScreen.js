@@ -1,17 +1,20 @@
 import React from "react";
-import { StyleSheet, Image, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity, ScrollView} from 'react-native';
 import { StudentProfileButtonsBar } from "../components/studentProfileButtonsBar";
 import { StudentProfileImage } from "../components/studentProfileImage";
+import { StudentProfileInformationCard } from "../components/studentProfileInformationCard";
 
 export const StudentProfileScreen = ({route}) => {
     const name0 = route.params.userId;
     
 
     return(
-        <View style={styles.container}>
+
+        <ScrollView style={styles.container}>
         <StudentProfileImage name={name0} imageUrl={'https://reactnative.dev/img/tiny_logo.png'}/>
         <StudentProfileButtonsBar/>
-        </View>
+        <StudentProfileInformationCard />
+        </ScrollView>
     )
 }
 
