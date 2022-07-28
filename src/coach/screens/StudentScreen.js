@@ -4,6 +4,7 @@ import axios from 'axios';
 
 //Screens
 import { StudentProfileScreen } from './StudentProfileScreen';
+import { StudentCard } from '../components/studentCard';
 
 
 
@@ -49,30 +50,28 @@ useEffect(()=> {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             const name = item.name;
-            const email = item.email;
+            
             return(
-              <TouchableOpacity
-              onPress={ () => navigation.navigate('StudentProfileScreen', {
-                name:name,
-                email:email
-              })}>
-               
-              </TouchableOpacity>
-            )
+                  <StudentCard name={name} imageUrl={'https://reactnative.dev/img/tiny_logo.png'} navigation={navigation} />
+                  )
           }}
           keyExtractor={(item) => item.email}
           />
     </View>
+  
+    
+    
   )
+
 }
+
+
 
 
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      marginTop: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
+      marginTop: 5,
       backgroundColor: '#F5FCFF',
     },
     h2text: {
