@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet} from 'react-native';
 import { alignItems } from 'styled-system';
 
-export const StudentProfileInformationCard = () => {
+export const StudentProfileTennisInfoCard = () => {
   return (
     <View style={styles.container}>
         <View style={styles.subContainers}>
@@ -22,6 +22,8 @@ export const StudentProfileInformationCard = () => {
             <Text style={[styles.text, styles.textNumbers]}>number</Text>
         </View>
     </View>
+    
+    
   )
 }
 
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     container:{
 
         //Box Style
+        marginBottom: 10,
         marginRight: 10,
         marginLeft: 10,
 
