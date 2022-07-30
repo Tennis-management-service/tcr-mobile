@@ -45,7 +45,7 @@ useEffect(()=> {
   return (
     <View style={styles.container}>
         <FlatList
-          style={{height:'100%', paddingBottom: 50}}
+          style={{height:'100%'}}
           data={data}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
@@ -71,7 +71,7 @@ useEffect(()=> {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      marginTop: 5,
+      margin: 2,
       backgroundColor: '#F5FCFF',
     },
     h2text: {
@@ -85,11 +85,5 @@ const styles = StyleSheet.create({
       paddingTop: 30,
       borderRadius: 2,
     },
-    name: {
-      fontFamily: 'Verdana',
-      fontSize: 18
-    },
-    email: {
-      color: 'red'
-    }
+   
 })
