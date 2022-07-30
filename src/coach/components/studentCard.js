@@ -7,7 +7,9 @@ export const StudentCard = ({imageUrl, name, navigation}) => {
     // const [usename, setname] = useState('');
     // setname(name);
   return (
-    <TouchableOpacity onPress={
+    <TouchableOpacity
+    style={styles.buttonContainer}
+    onPress={
         () => {
                 navigation.navigate('StudentProfile', {
                     userId: name,
@@ -26,15 +28,20 @@ export const StudentCard = ({imageUrl, name, navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    buttonContainer:{
+        height: "10%",
+        backgroundColor: 'white'
+    },
     container:{
         backgroundColor: '#78ccf0',
         
-        height: 100,
+        height: 90,
         
         // Content placement
+        flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        alignContent: 'flex-start',
+        
 
         //Border
         borderRadius: 13,
@@ -60,24 +67,28 @@ const styles = StyleSheet.create({
         backgroundColor: 'yellow',
         height: 70,
         width: 70,
-        justifyContent: 'center',
+       
         borderWidth: 1,
         borderRadius: 12,
     },
     textName: {
         flexDirection: 'row-reverse',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'notoserif',
         color: 'black'
     },
     textPlacement: {
-        marginRight: 70,
+        marginLeft: 10,
+        marginRight: 4,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     imagePlacement: {
-        marginLeft: 20,
-        flexDirection: 'row',
-       
+        marginLeft: 7,
+        justifyContent: 'center',
+        alignContent: 'center',       
     }
 });
 
