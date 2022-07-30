@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     textPlacement: {
         marginLeft: 10,
         marginRight: 4,
-        backgroundColor: 'red',
         justifyContent: 'center',
         alignContent: 'center',
     },
