@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 export const ClubAddScreen = () => {
   return (
@@ -8,3 +8,10 @@ export const ClubAddScreen = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    container: {
+
+    },
+    
+})
