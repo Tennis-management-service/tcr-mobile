@@ -21,26 +21,22 @@ const SetState = (id) => {
 };
 
 
-export const ClubScreen = ({props}) => {
+export const ClubScreen = ({}) => {
 
-
-  SetState(props.id);
+  const props  = true;
+  
   
   // useEffect(() => {
   //   setclub(true);
   // },[club]);
 
 
-  switch(club){
-    case true:
-       return <ClubAssigned />
-    break;
-    case false:
-       return <ClubNotAssigned />
-    break;
-    default:
-      return null;
+  if(props){
+    return <ClubAssigned />
+  } else {
+    return <ClubNotAssigned />
   }
+ 
 
   // return(
   //   <View>

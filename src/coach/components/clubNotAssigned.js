@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 export const ClubNotAssigned = () => {
     return (
       <View>
-        <Text>Club</Text>
+        <Text>Not Club</Text>
       </View>
     )
 }
