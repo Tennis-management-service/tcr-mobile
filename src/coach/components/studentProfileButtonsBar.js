@@ -26,12 +26,13 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: 'white',
         
-        height: 88,
+        width: "94%",
+        aspectRatio: 10/2,
         
         // Content placement
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
 
         //Border
         borderRadius: 13,
@@ -42,44 +43,43 @@ const styles = StyleSheet.create({
         marginBottom: 10,
 
         // Shadow
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.50,
-        shadowRadius: 4.90,
-        elevation: 8,
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 4,
+        // },
+        // shadowOpacity: 0.50,
+        // shadowRadius: 4.90,
+        // elevation: 8,
     },
     buttons:{
-        borderWidth: 1,
-        paddingTop: 30,
-        paddingBottom: 30,
-        paddingLeft:45,
-        paddingRight: 45,
-
+        // borderWidth: 1,
+        // paddingTop: 30,
+        // paddingBottom: 30,
+        // paddingLeft:45,
+        // paddingRight: 45,
+        padding: 18,
     
     },
     button1:{
         backgroundColor: '#78ccf0',
-        borderTopStartRadius: 13,
-        borderBottomLeftRadius: 13
+        borderRadius: 13,
     },
     button2:{
         backgroundColor: '#78ccf0',
-        paddingLeft: 37, 
-        paddingRight: 37
+        borderRadius: 13,
+        // paddingLeft: 37, 
+        // paddingRight: 37
     },
     button3:{
         backgroundColor: '#78ccf0',
-        borderTopEndRadius: 13,
-        borderBottomEndRadius: 13
+        borderRadius: 13,
     },
-    border:{
-        backgroundColor: 'red',
-        height: 10,
-        border: 2,
-    },
+    // border:{
+    //     backgroundColor: 'red',
+    //     height: 10,
+    //     border: 2,
+    // },
 
     text:{
         fontSize: 19, 
