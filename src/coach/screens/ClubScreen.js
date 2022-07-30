@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import { Text, View } from 'react-native'
+import React, {useState, useEffect} from 'react';
+import { Text, View } from 'react-native';
 
+import { ClubAssigned } from '../components/clubAssigned';
+import { ClubNotAssigned } from '../components/clubNotAssigned';
 
 {/**\
 FUNCTIONS WE NEED
@@ -10,33 +12,40 @@ FUNCTIONS WE NEED
 
 */}
 
-const ClubAssigned = () => {
-  return (
-    <View>
-      <Text>Club</Text>
-    </View>
-  )
-}
-const ClubNotAssigned = () => {
-  return (
-    <View>
-      <Text>Club</Text>
-    </View>
-  )
-}
+const SetState = (id) => {
+  const [club, setclub] = useState('');
+
+  useEffect(() => {
+    setclub(id);
+  }, []);
+};
+
 
 export const ClubScreen = ({props}) => {
-  const [club, setClub] = useState(true);
-  setClub(true);
+
+
+  SetState(props.id);
+  
+  // useEffect(() => {
+  //   setclub(true);
+  // },[club]);
+
 
   switch(club){
     case true:
-       <ClubAssigned />
+       return <ClubAssigned />
     break;
     case false:
-       <ClubNotAssigned />
+       return <ClubNotAssigned />
     break;
     default:
       return null;
   }
-}
+
+  // return(
+  //   <View>
+  //     <Text>Hellow</Text>
+  //   </View>
+  // )
+
+};
