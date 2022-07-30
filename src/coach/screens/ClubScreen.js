@@ -21,9 +21,9 @@ const SetState = (id) => {
 };
 
 
-export const ClubScreen = ({}) => {
+export const ClubScreen = ({navigation}) => {
 
-  const props  = true;
+  const props  = false;
   
   
   // useEffect(() => {
@@ -32,9 +32,9 @@ export const ClubScreen = ({}) => {
 
 
   if(props){
-    return <ClubAssigned />
+    return <ClubAssigned props={props} nav={navigation}/>
   } else {
-    return <ClubNotAssigned />
+    return <ClubNotAssigned props={props} nav={navigation}/>
   }
  
 
