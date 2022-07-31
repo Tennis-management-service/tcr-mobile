@@ -36,7 +36,9 @@ const TabNavigator = () => {
         <Tab.Screen 
             name="ClubTab"    
             component={ClubStackNav}
-            options={{ headerShown: false }}/>
+            options={{ 
+                headerShown: false,
+                tabBarHideOnKeyboard: true }}/>
         {/* The Club Screen will be a stack navigator. 
             It will render the registered club for the coach.
             If there is no registered club, there will be a button to search and register a club.  */}
