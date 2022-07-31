@@ -21,6 +21,7 @@ const SetState = (id) => {
 };
 
 
+// eslint-disable-next-line react/prop-types
 export const ClubScreen = ({navigation}) => {
 
   const props  = false;

@@ -18,8 +18,8 @@ export const ClubNotAssigned = ({props, nav}) => {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    height: '100%',
     flexDirection: 'column',
+    height: '100%',
 
     
   },
