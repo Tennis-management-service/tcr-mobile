@@ -4,7 +4,9 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 export const ClubAddRenderBox = () => {
   return (
     <View style={styles.container}>
-        <FlatList />
+        <FlatList 
+        
+        />
     </View>
   )
 }
