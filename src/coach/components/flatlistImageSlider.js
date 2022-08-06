@@ -4,40 +4,7 @@ import { View, Image, TouchableOpacity, StyleSheet, LayoutAnimation, FlatList, P
 import { Dimensions } from 'react-native';
 import { Indicator } from './indicator';
 
-const data = [
-    {
-      id: '1',
-      image:
-        'https://images.unsplash.com/photo-1567226475328-9d6baaf565cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-      desc: 'Silent Waters in the mountains in midst of Himilayas',
-    },
-    {
-      id: '2',
-      image:
-        'https://images.unsplash.com/photo-1455620611406-966ca6889d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1130&q=80',
-      desc:
-        'Red fort in India New Delhi is a magnificient masterpeiece of humans',
-    },
-    {
-      id: '3',
-      image:
-        'https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-      desc:
-        'Sample Description below the image for representation purpose only',
-    },
-    {
-      id: '4',
-      image:
-        'https://images.unsplash.com/photo-1568700942090-19dc36fab0c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-      desc:
-        'Sample Description below the image for representation purpose only',
-    },
-    {
-      id: '5',
-      image:'https://images.unsplash.com/photo-1584271854089-9bb3e5168e32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
-      desc:'Sample Description below the image for representation purpose only',
-    },
-  ];
+
 
 
   
@@ -74,7 +41,11 @@ export const FlatlistImageSlider = ({props}) => {
 
   
 
-  const [index, setIndex] = useState (0);
+   const [index, setIndex] = useState (0);
+  // const [sliderTimer, setSliderTimer] = useState(0);
+  // const [data, setData] = useState({});
+
+  // setData(props.data);
 
  const slider = createRef();
  const ItemWidth = props.screenWidth;
@@ -87,6 +58,62 @@ export const FlatlistImageSlider = ({props}) => {
  });
 
 
+//  if(Platform.OS === 'android'){
+//   UIManager.setLayoutAnimationEnabledExperimental(true);
+// }
+
+// const onViewableItemsChanged = ({viewableItems, changed}) => {
+//   if(viewableItems.length > 0){
+//     let currentIndex = viewableItems[0].index;
+//     if(
+//       currentIndex % props.data.length === props.data.length -1 &&
+//       props.loop 
+//     ){
+//       setIndex({
+//         index: currentIndex,
+//         data: [data, ...props.data],
+//       })
+//     } else {
+//       setIndex({index: currentIndex});
+//     }
+//   }
+//     if (props.currentIndexCallback){
+//       props.currentIndexCallback(currentIndex);
+//     }
+// }
+
+// const changeSliderListIndex = () => {
+//   if(props.animation){
+//     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+//   }
+//   setIndex({index: index +1});
+//   slider.current.scrollToIndex({
+//     index: index,
+//     animated: true,
+//   });
+
+// };
+
+//Started Auto play images. Not complete. Stays in the code 
+// to finish later.
+// const startAutoPlay = () =>{
+  
+  
+//   setSliderTimer(setInterval(
+//     changeSliderListIndex,
+//     props.timer
+//   ))
+// }
+
+// Started AutoPlay images. Not complete. Stays in the code
+// to finish alter.
+// const stopAutoPlay = () => {
+//   if(sliderTimer) {
+//     clearInterval()
+//   }
+// }
+
+
   return (
     <View style={styles.container}>
     
@@ -94,7 +121,7 @@ export const FlatlistImageSlider = ({props}) => {
         <FlatList
           style={styles.flatlist}
           horizontal={true}
-          data={data}
+          data={props.data}
           pagingEnabled={true}
           windowSize={1}
           bounces={false}
@@ -103,6 +130,7 @@ export const FlatlistImageSlider = ({props}) => {
           initialNumToRender={1}
           maxToRenderPerBatch={1}
           removeClippedSubviews={true}
+          //onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={{viewAreaCoveragePercentThreshold: 50,}}
           getItemLayout={(data, index) => ({
             length: totalItemWidth,
@@ -121,13 +149,13 @@ export const FlatlistImageSlider = ({props}) => {
             return <View style={{height: "100%" }}/>
           }}
           
-        />
-       
-        
-        {props.indicator ? ( 
+      />
+
+          
+      <View>
         <Indicator
-            itemCount={data.length}
-            currentIndex={index % data.length}
+            itemCount={props.data.length}
+            currentIndex={index % props.data.length}
             indicatorStyle={props.indicatorStyle}
             indicatorContainerStyle={[
               styles.indicatorContainerStyle,
@@ -138,30 +166,15 @@ export const FlatlistImageSlider = ({props}) => {
             indicatorActiveWidth={props.indicatorActiveWidth}
             style={{...styles.indicator, ...props.indicatorStyle}}
           />
-          ) :(null)
         
-        }
+      </View>
+      
+        
+        
 
     </View>
   )
 
-  if(Platform.OS === 'android'){
-    UIManager.setLayoutAnimationEnabledExperimental(true);
-  }
-
-
-
-  const changeSliderListIndex = () => {
-    if(props.animation){
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    }
-    setIndex({index: props.index +1});
-    slider.current.scrollToIndex({
-      index: props.index,
-      animated: true,
-    });
-
-  };
 
 
 }
@@ -229,222 +242,3 @@ const IndicatorStyle = StyleSheet.create({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const ChildItem = ({item, onPress, index, imageKey, local, height}) => {
-//     return (
-//         <TouchableOpacity
-//           style={ChildItemstyles.container}
-//           onPress={() => onPress(index)}>
-//           <Image
-//             style={[ChildItemstyles.image, ChildItemstyles, {height: height}]}
-//             source={local ? item[imageKey] : {uri: item[imageKey]}}
-//           />
-//         </TouchableOpacity>
-//       );
-// }
-
-
-// export const FlatListImageSlider = ({props}) => {
-
-//     slider = createRef();
-
-//     const defaultProps = {
-//         data: [],
-//         imageKey: 'image',
-//         local: false,
-//         width: Math.round(Dimensions.get('window').width),
-//         height: 230,
-//         separatorWidth: 0,
-//         loop: true,
-//         indicator: true,
-//         indicatorStyle: {},
-//         indicatorContainerStyle: {},
-//         indicatorActiveColor: '#3498db',
-//         indicatorInActiveColor: '#bdc3c7',
-//         indicatorActiveWidth: 6,
-//         animation: true,
-//         autoscroll: true,
-//         timer: 3000,
-//         onPress: {},
-//         contentContainerStyle: {},
-//         component: <ChildItem/>,
-//     };
-
-
-//     onViewableItemsChanged = ({viewableItems, changed}) => {
-//         if(viewableItems.length > 0){
-//             let currentIndex = viewableItems[0].index;
-//             if(
-//                 currentIndex % props.data.length === props.data.length -1 &&
-//                 props.loop)
-//                 {
-//                     //Change this to useState
-//                     this.setState({
-//                         index: currentIndex,
-//                         data: [...this.state.data, ...this.props.data],
-//                     });
-//                 } else {
-//                     //Change this to useState
-//                     this.setState({index: currentIndex});
-//                 }
-
-//                 if (props.currentIndexCallback) {
-//                     props.currentIndexCallback(currentIndex);
-//                 }
-//         }
-//     };
-
-//     viewabilityConfig = {
-//         viewAreaCoveragePercentThreshold: 50,
-//     };
-
-//     componentDidMount = () => {
-//         if (props.autoscroll) {
-//           startAutoPlay();
-//         }
-//       }
-
-//     componentWillUnmount = () => {
-//         if(props.autoscroll){
-//             stopAutoPlay();
-//         }
-//     };
-
-//     startAutoPlay = () => {
-//         props.sliderTimer = setInterval(
-//             changeSliderListIndex,
-//             props.timer,
-//         );
-//     };
-
-//     stopAutoPlay = () => {
-//         if(props.sliderTimer){
-//             clearInterval(props.sliderTimer);
-//             props.sliderTimer = null;
-//         }
-//     };
-
-//     changeSliderListIndex = () => {
-//         if(props.animation){
-//             LayoutAnimation.configureNext(LayoutAnimation.Presets.easeIn);
-//         }
-//         //Change this to useState
-//         this.setState({index: this.state.index+1});
-//         this.slider.current.scrollToIndex({
-//             index: this.state.index,
-//             animated: true,
-//         })
-//     }
-
-
-//     const itemWidth = props.width;
-//     const separatorWidth = props.width;
-//     totalItemWidth = itemWidth + separatorWidth;
-
-//     return (
-//         <View>
-//             <FlatList
-//                 ref={props.slider}
-//                 horizontal
-//                 pagingEnabled={true}
-//                 snapToAlignment={totalItemWidth}
-//                 bouncesZoom={false}
-//                 contentContainerStyle={props.contentContainerStyle}
-//                 data={props.data}
-//                 showsHorizontalScrollIndicator={false}
-//                 renderItem={({item, index}) => {
-//                     React.cloneElement(props.compnent, {
-//                         style:{width: props.width},
-//                         item: item, 
-//                         imageKey: props.imageKey,
-//                         onPress: props.onPress,
-//                         index: props.index % props.data.length,
-//                         active: index === props.length,
-//                         local: props.local,
-//                         height: props.height, 
-//                     })
-//                 }}
-//                 ItemSeparatorComponent={() => (
-//                     <View style={{width: this.props.separatorWidth}} />
-//                 )}
-//                 keyExtractor={(item, index) => item.toString() + index}
-//                 viewabilityConfig={props.viewabilityConfig}
-//                 onViewableItemsChanged={props.onViewableItemsChanged}
-//                 getItemLayout={(data, index) => ({
-//                     length: totalItemWidth,
-//                     offset: totalItemWidth * index,
-//                     index,
-//                 })}
-//                 windowSize={1}
-//                 initialNumToRender={1}
-//                 maxToRenderPerBatch={1}
-//                 removeClippedSubviews={true}
-//                 snapToInterval={totalItemWidth}
-
-//                 decelerationRate = "fast"
-
-//                 bounces={false}
-
-//             />
-//             {props.indicator && (
-//                 <Indicator  
-//                     itemCount = {props.data.length}
-//                     currentIndex={props.index % props.data.length}
-//                     indicatorStyle={props.indicatorStyle}
-//                     indicatorContainerStyle={[
-//                         styles.indicatorContainerStyle,
-//                         props.indicatorContainerStyle,
-//                     ]}
-//                     indicatorActiveColor={props.indicatorActiveColor}
-//                     indicatorInActiveColor={props.indicatorInActiveColor}
-//                     indicatorActiveWidth={props.indicatorActiveWidth}
-//                     style={{...styles.indicator, ...props.indicatorStyle}}
-//                 />
-//             )}
-//         </View>
-//       )
-
-// }
-
-
-
-// const ChildItemstyles = StyleSheet.create({
-//     container: {},
-//     image: {
-//       height: 230,
-//       resizeMode: 'stretch',
-//     },
-//   });
