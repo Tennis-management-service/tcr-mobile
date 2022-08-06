@@ -23,7 +23,7 @@ const SetState = (id) => {
 
 export const ClubScreen = ({navigation}) => {
 
-  const props  = false;
+  const props  = true;
   
   
   // useEffect(() => {
