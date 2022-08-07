@@ -1,12 +1,12 @@
 import React from 'react'
 import {View, Text, StyleSheet, Image} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { flex } from 'styled-system';
+
 
 
 
 const CoachCard = ({width, data, name, rank}) => {
-    
+   
     return(
         <View style={[styles.card, {width:width-30}]}>
             <Image style={styles.image} source={{uri: data}}/>

@@ -1,6 +1,8 @@
 import React from "react"
 import {View, Text, StyleSheet, Dimensions, ScrollView} from 'react-native';
 import { ClubCoachesRosterCard } from "./clubCoachesRosterCard";
+import { ClubPostInput } from "./clubPostInput";
+import { ClubPostsScreen } from "./clubPostsScreen";
 import { FlatlistImageSlider } from "./flatlistImageSlider";
 
 export const ClubAssigned = () => {
@@ -77,6 +79,14 @@ export const ClubAssigned = () => {
     screenWidth: screenWidth,
   }
 
+  const clubPostInputProps = {
+    screenWidth: screenWidth
+  }
+
+  const clubPostsScreenProps = {
+    screenWidth: screenWidth
+  }
+
   
 
   
@@ -85,6 +95,8 @@ export const ClubAssigned = () => {
         <ScrollView>
           <FlatlistImageSlider props={flatlistImageSliderProps} />
           <ClubCoachesRosterCard props={clubCoachesRosterCardProps}/>
+          <ClubPostInput props={clubPostInputProps}/>
+          <ClubPostsScreen props={clubPostsScreenProps}/>
         </ScrollView>
       </View>
     )
@@ -95,6 +107,7 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'column',
     height: "100%",
+    justifyContent: 'center'
     
   }
 });
