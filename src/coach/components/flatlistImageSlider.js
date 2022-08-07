@@ -1,6 +1,7 @@
 
 import React, {createRef, useState, useEffect}from 'react'
-import { View, Image, TouchableOpacity, StyleSheet, LayoutAnimation, FlatList, Platform, UIManager } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
 import { Indicator } from './indicator';
 
@@ -183,7 +184,7 @@ const {width} = Dimensions.get('window');
 const ChildrenStyle = StyleSheet.create({
   
   flatlist:{
-
+    height: "100%",
   },
   touchableOpacity:{
 
@@ -198,7 +199,7 @@ const ChildrenStyle = StyleSheet.create({
 
 const styles = StyleSheet.create({
   container:{
-    height: "40%",
+    height: 240,
 
   },
   flatlist:{
@@ -239,6 +240,4 @@ const IndicatorStyle = StyleSheet.create({
   active: {},
   inactive: {},
 })
-
-
 
