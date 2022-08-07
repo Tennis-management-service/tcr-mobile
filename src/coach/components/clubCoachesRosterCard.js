@@ -5,14 +5,14 @@ import { flex } from 'styled-system';
 
 
 
-const CoachCard = ({width, data, name, speciality}) => {
+const CoachCard = ({width, data, name, rank}) => {
     
     return(
         <View style={[styles.card, {width:width-30}]}>
             <Image style={styles.image} source={{uri: data}}/>
             <View style={{flex:1}}>
                 <Text style={styles.cardText}>{'Name: '+name}</Text>
-                <Text style={styles.cardText}>{'Rank: '+speciality}</Text>
+                <Text style={styles.cardText}>{'Rank: '+rank}</Text>
             </View>
         </View>
     )
@@ -50,7 +50,7 @@ export const ClubCoachesRosterCard = ({props}) => {
                             width={props.screenWidth}
                             data={item.image}
                             name={item.name}
-                            speciality={item.speciality}
+                            speciality={item.rank}
                         />
                     )
                 }}
