@@ -50,7 +50,7 @@ export const ClubCoachesRosterCard = ({props}) => {
                             width={props.screenWidth}
                             data={item.image}
                             name={item.name}
-                            speciality={item.rank}
+                            rank={item.rank}
                         />
                     )
                 }}
