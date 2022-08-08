@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler';
 
 
 
-const CoachCard = ({width, data, name, rank}) => {
+const CoachCard = ({width, key, data, name, rank}) => {
    
     return(
         <View style={[styles.card, {width:width-30}]}>
@@ -28,8 +28,8 @@ export const ClubCoachesRosterCard = ({props}) => {
     const data = props.data;
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.flatlistHeadline}>COACH ROSTER</Text>
+        <View key={1} style={styles.container}>
+            <Text key={2} style={styles.flatlistHeadline}>COACH ROSTER</Text>
             <FlatList 
                 style={styles.flatlist}
                 data={data}
@@ -47,6 +47,7 @@ export const ClubCoachesRosterCard = ({props}) => {
                 renderItem={({item, index}) => {
                     return (
                         <CoachCard 
+                            key={index}
                             width={props.screenWidth}
                             data={item.image}
                             name={item.name}
