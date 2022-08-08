@@ -84,6 +84,7 @@ export const ClubAssigned = () => {
   }
 
   const clubPostsScreenProps = {
+    data: DATA,
     screenWidth: screenWidth
   }
 
