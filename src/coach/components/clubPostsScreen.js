@@ -1,5 +1,33 @@
-import React from 'react'
-import {View, Text, StyleSheet, Image} from 'react-native'
+import React, {useState} from 'react'
+import {View, Text, StyleSheet, Image, Button} from 'react-native'
+
+
+const LikePost = (likeCount) => {
+    const [LikeCount, setLikeCount] = useState(likeCount);
+    return(
+        
+            <Button 
+                title='Like' 
+                onPress={() => {
+                    setLikeCount(LikeCount+1);
+                }}
+                style={styles.likeButton} />
+       
+    )
+}
+
+const Comments = (comment) => {
+    const [comments, setComments] = useState(comment);
+    return(
+        <Button 
+            title='Comment'
+            onPress={() => {
+                
+            }}
+            style={styles.commentButton}
+            />
+    )
+}
 
 export const ClubPostsScreen = ({props}) => {
     const screenWidth = props.screenWidth;
@@ -17,7 +45,10 @@ export const ClubPostsScreen = ({props}) => {
                 </View>
                 {data[i].desc ? <Text style={styles.descText}  key={i+1}>{data[i].desc}</Text>: null}
                 {data[i].image ? <Image key={i+3} style={styles.image} source={{uri: data[i].image}}/> : null}
-
+                <View style={styles.buttonBottomBar}>
+                    {data[i].likes ? <LikePost likeCount={data[i].likes} /> : null}
+                    {data[i].comments ? <Comments /> : null}
+                </View>
                 
             </View>
         )
@@ -75,6 +106,16 @@ const styles = StyleSheet.create({
         height: 300,
         width: "90%",
         resizeMode: 'stretch'
+    }, 
+    likeButton:{
+        height: 20,
+        width: 30,
+    },
+    commentButton:{
+
+    },
+    buttonBottomBar:{
+        flexDirection: 'row',
     }
 })
 
