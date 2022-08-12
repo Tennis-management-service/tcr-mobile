@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {View, Text, StyleSheet, Image, Button} from 'react-native'
-
+import {View, Text, StyleSheet, Image, Button, Modal} from 'react-native'
+import { FadeIn } from 'react-native-reanimated';
 
 const LikePost = (likeCount) => {
     const [LikeCount, setLikeCount] = useState(likeCount);
@@ -16,14 +16,15 @@ const LikePost = (likeCount) => {
     )
 }
 
-const Comments = (comment) => {
-    const [comments, setComments] = useState(comment);
+
+
+
+const Comments = (data, visibility) => {
+    const [isVisible, setVisible] = useState(visibility);
     return(
         <Button 
             title='Comment'
-            onPress={() => {
-                
-            }}
+            onPress={() => {setVisible(!isVisible)}}
             style={styles.commentButton}
             />
     )
@@ -47,8 +48,18 @@ export const ClubPostsScreen = ({props}) => {
                 {data[i].image ? <Image key={i+3} style={styles.image} source={{uri: data[i].image}}/> : null}
                 <View style={styles.buttonBottomBar}>
                     {data[i].likes ? <LikePost likeCount={data[i].likes} /> : null}
-                    {data[i].comments ? <Comments /> : null}
+                    {data[i].comments ? <Comments visibility={false}/> : null}
                 </View>
+                <Modal 
+                    style={{flex:1}}
+                    onRequestClose={() => {}}
+                    animated={FadeIn}
+                    visible={true}>
+                    
+                    <View style={{width: 200, height: 300}}>
+                        <Text>{data[i].desc}</Text>
+                    </View>
+                </Modal>
                 
             </View>
         )
