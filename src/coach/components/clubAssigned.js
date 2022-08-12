@@ -87,7 +87,7 @@ export const ClubAssigned = ({props, nav}) => {
       id: '5',
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
-      likes: 0,
+      likes: 1,
       comments: [
         {
           id: 'sldjfslfjsld',
