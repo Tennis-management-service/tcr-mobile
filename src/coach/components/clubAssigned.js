@@ -17,11 +17,16 @@ export const ClubAssigned = ({props, nav}) => {
       name: 'Spyridon Kaperonis',
       rank:'Director',
       likes: 5,
+      comment: true,
       comments: [
         {
-          id: 'sldjfslfjsld',
-          comment: 'Awesome picture',
-        }
+          id: 'sldjfslsssfjsld',
+          comment: 'Awesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome picture',
+        },
+        {
+          id: 'sldjsfslfjsld',
+          comment: 'Awesome picture my friend',
+        },
       ],
       profileImage: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80',
       image:
@@ -33,9 +38,10 @@ export const ClubAssigned = ({props, nav}) => {
       name: 'Spyridon Kaperonis',
       rank:'Head Coach',
       likes: 4,
+      comment: true,
       comments: [
         {
-          id: 'sldjfslfjsld',
+          id: 'sldjfssssssslfjsld',
           comment: 'Awesome picture',
         }
       ],
@@ -50,13 +56,14 @@ export const ClubAssigned = ({props, nav}) => {
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 2,
+      comment: true,
       comments: [
         {
-          id: 'sldjfslfjsld',
+          id: 'sldjfslfjaasld',
           comment: 'Awesome picture',
         },
         {
-          id: 'lsdfjklsdjl',
+          id: 'lsdfjkfflsdjl',
           comment: 'I have to visit this place'
         }
       ],
@@ -71,9 +78,10 @@ export const ClubAssigned = ({props, nav}) => {
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 7,
+      comment: true,
       comments: [
         {
-          id: 'sldjfslfjsld',
+          id: 'sldjfeeslfjsld',
           comment: 'Awesome picture',
         }
       ],
@@ -88,9 +96,10 @@ export const ClubAssigned = ({props, nav}) => {
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 1,
+      comment: true,
       comments: [
         {
-          id: 'sldjfslfjsld',
+          id: 'sldjfslyyfjsld',
           comment: 'Awesome picture',
         }
       ],
