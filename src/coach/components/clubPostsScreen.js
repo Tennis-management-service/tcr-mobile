@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {View, Text, StyleSheet, Image, Button, Modal} from 'react-native'
 import { FadeIn } from 'react-native-reanimated';
+import { width } from 'styled-system';
 
 const LikePost = (likeCount) => {
     const [LikeCount, setLikeCount] = useState(likeCount);
@@ -45,18 +46,18 @@ export const ClubPostsScreen = ({props}) => {
                     {data[i].name ? <Text style={styles.nameText} key={i+2}>{data[i].name}</Text> : null}
                 </View>
                 {data[i].desc ? <Text style={styles.descText}  key={i+1}>{data[i].desc}</Text>: null}
-                {data[i].image ? <Image key={i+3} style={styles.image} source={{uri: data[i].image}}/> : null}
+                {data[i].image ? <Image key={i+3} style={[styles.image, {width:screenWidth}]} source={{uri: data[i].image}}/> : null}
                 <View style={styles.buttonBottomBar}>
                     {data[i].likes ? <LikePost likeCount={data[i].likes} /> : null}
                     {data[i].comments ? <Comments visibility={false}/> : null}
                 </View>
                 <Modal 
-                    style={{flex:1}}
+                    style={{flex:1,
+                    width: 100, height: 100}}
                     onRequestClose={() => {}}
-                    animated={FadeIn}
-                    visible={true}>
+                    visible={false}>
                     
-                    <View style={{width: 200, height: 300}}>
+                    <View style={{width: 50, height: 30}}>
                         <Text>{data[i].desc}</Text>
                     </View>
                 </Modal>
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
         flex:1,
         marginTop: 10,
         marginBottom: 10,
-        padding: 5,
         backgroundColor: '#dff5f4',
 
         //Border
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     image:{
         marginTop: 5,
         height: 300,
-        width: "90%",
         resizeMode: 'stretch'
     }, 
     likeButton:{
