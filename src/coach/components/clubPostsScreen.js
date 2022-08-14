@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {View, Text, StyleSheet, Image, Button, Modal} from 'react-native'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+
 
 
 const LikePost = ({likeCount}) => {
@@ -20,10 +21,12 @@ const LikePost = ({likeCount}) => {
 
 
 
-const PopUpComments = ({comments, visibility}) => {
+const PopUpComments = ({comments, visibility, key}) => {
     const [isVisible, setVisible] = useState(visibility);
+    const [newComment, setComment] = useState();
+    const [inputHeight, setHeight] = useState();
     return(
-        <View>
+        <View key={key}>
             <Button title={'Comment'} onPress={() =>  setVisible(true)} />
 
             <Modal transparent animationType='fade' visible={isVisible}>
@@ -32,23 +35,35 @@ const PopUpComments = ({comments, visibility}) => {
                     <View style={styles.modalContentContainer}>
                         <Button title={'OFF'} onPress={() => setVisible(false)} />
                         <FlatList 
-                            key={'00'}
-                            style={{flex:1, flexWrap: 'wrap'}}
+                            style={{flex:1, heigth: "90%", flexWrap: 'wrap', borderWidth: 1}}
                             data={comments}
                             renderItem={({item, index}) => {
+                                console.log('COMMENTITEM ', item);
                                 return (
-                                <View style={styles.commentBox}>
-                                    <Text style={{flex: 1, flexWrap: 'wrap', borderWidth: 1}}>{item.comment}</Text>
+                                <View key={item.id} style={styles.commentBox}>
+                                    <Text style={{color: 'black'}}>{item.comment}</Text>
                                 </View>
                                 )
                             }}
-                            keyExtractor={(index) => index}
-
-                            />
-                        <Text>Hello World</Text>
-                        <Text>Hello World</Text>
-                        <Text>Hello World</Text>
-                        <Text>Hello World</Text>
+                            keyExtractor={(item, index) => item.id}
+                        />
+                        <View style={{width: "100%", height: 0.5, backgroundColor: 'blue'}}/>
+                        <View style={styles.inputButtonView}>
+                            <TextInput 
+                                style={styles.modalTextInput}
+                                placeholder='A penny for your thoughts.'
+                                onChangeText={(text) => setComment(text)}
+                                multiline={true}
+                                numberOfLines={3}
+                                // onContentSizeChange={(event) => {
+                                //     const height = event.nativeEvent.contentSize.height;
+                                  
+                                //     setHeight(height);
+                                // }}
+                                />
+                            {/* Add Image of arrow to push post */}
+                            <Text>Hello</Text>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -59,24 +74,24 @@ const PopUpComments = ({comments, visibility}) => {
 export const ClubPostsScreen = ({props}) => {
     const screenWidth = props.screenWidth;
     let data = props.data;
-    console.log('Data in clubPostScreen: ', data[0].desc);
 
     const [visible, setVisible] = useState(false);
 
     let cards = [];
+
     for(let i=0; i<data.length; i++){
         
         cards.push(
-            <View style={styles.card}>
+            <View key={data[i].id} style={styles.card}>
                 <View style={styles.cardHeader}>
-                    {data[i].profileImage ? <Image style={styles.profileImage} key={i+3} source={{uri: data[i].profileImage}}/>: null }
+                    {data[i].profileImage ? <Image style={styles.profileImage} source={{uri: data[i].profileImage}}/>: null }
                     {data[i].name ? <Text style={styles.nameText} key={i+2}>{data[i].name}</Text> : null}
                 </View>
-                {data[i].desc ? <Text style={styles.descText}  key={i+1}>{data[i].desc}</Text>: null}
-                {data[i].image ? <Image key={i+3} style={[styles.image, {width:screenWidth}]} source={{uri: data[i].image}}/> : null}
-                <View style={styles.buttonBottomBar}>
+                {data[i].desc ? <Text style={styles.descText}>{data[i].desc}</Text>: null}
+                {data[i].image ? <Image style={[styles.image, {width:screenWidth}]} source={{uri: data[i].image}}/> : null}
+                <View key={i+3} style={styles.buttonBottomBar}>
                     {data[i].likes ? <LikePost likeCount={data[i].likes} /> : null}
-                    {data[i].comment ? <PopUpComments comments={data[i].comments} visibility={visible} /> : null}
+                    {data[i].comment ? <PopUpComments key={data[i].comments.id} comments={data[i].comments} visibility={visible} /> : null}
                 </View>
                 
                 
@@ -85,7 +100,7 @@ export const ClubPostsScreen = ({props}) => {
     }
   return (
 
-    <View key={0} style={[styles.container, {width: screenWidth}]}>
+    <View key={'14'} style={[styles.container, {width: screenWidth}]}>
         {cards}
     </View>
   )
@@ -156,19 +171,28 @@ const styles = StyleSheet.create({
 
     }, 
     modalContentContainer:{
-        height: "90%",
+        height: "100%",
         width: "90%",
         backgroundColor: 'white',
-        paddingHorizontal: 20,
+        elevation: 7, 
     },
     commentBox: {
-        flex: 1,
-        flexWrap: 'wrap',
-        backgroundColor: 'yellow',
+        backgroundColor: '#d0e2bc',
         marginTop: 8,
+        marginLeft: 5, 
         padding: 5, 
-        borderWidth: 0.5,
         borderRadius: 7,
-    }
+    }, 
+    modalTextInput: {
+        borderWidth: 1,
+        margin: 4,
+        width: "80%",
+        borderRadius: 8, 
+    },
+    inputButtonView: {
+      flexDirection: 'row',
+      
+      alignItems: 'center',
+    },
 })
 
