@@ -13,18 +13,38 @@ export const ClubAssigned = ({props, nav}) => {
 
   const DATA = [
     {
-      id: '1',
+      id: '1dvds',
       name: 'Spyridon Kaperonis',
       rank:'Director',
       likes: 5,
       comment: true,
       comments: [
         {
-          id: 'sldjfslsssfjsld',
-          comment: 'Awesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome pictureAwesome picture',
+          id: '0001',
+          comment: 'Awesome picture my friend',
         },
         {
-          id: 'sldjsfslfjsld',
+          id: '0002',
+          comment: 'AersomePicture of mountainsA ersomePicture of mountains',
+        },
+        {
+          id: '0003',
+          comment: 'Awesome picture my frsdsddiend',
+        },
+        {
+          id: '0004',
+          comment: 'Awesome picture my friend',
+        },
+        {
+          id: '0005',
+          comment: 'Awesome picture my friend',
+        },
+        {
+          id: '0006',
+          comment: 'Awesome picture my friend',
+        },
+        {
+          id: '0007',
           comment: 'Awesome picture my friend',
         },
       ],
@@ -34,14 +54,14 @@ export const ClubAssigned = ({props, nav}) => {
       desc: 'Silent Waters in the mountains in midst of Himilayas',
     },
     {
-      id: '2',
+      id: '2xc',
       name: 'Spyridon Kaperonis',
       rank:'Head Coach',
       likes: 4,
       comment: true,
       comments: [
         {
-          id: 'sldjfssssssslfjsld',
+          id: 'sldjfssssspttssslfjsld',
           comment: 'Awesome picture',
         }
       ],
@@ -52,7 +72,7 @@ export const ClubAssigned = ({props, nav}) => {
         'Red fort in India New Delhi is a magnificient masterpeiece of humans',
     },
     {
-      id: '3',
+      id: '3zxzx',
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 2,
@@ -62,10 +82,7 @@ export const ClubAssigned = ({props, nav}) => {
           id: 'sldjfslfjaasld',
           comment: 'Awesome picture',
         },
-        {
-          id: 'lsdfjkfflsdjl',
-          comment: 'I have to visit this place'
-        }
+        
       ],
       profileImage: 'https://images.unsplash.com/photo-1525550557089-27c1bfedd06c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
       image:
@@ -74,14 +91,14 @@ export const ClubAssigned = ({props, nav}) => {
         'Sample Description below the image for representation purpose only',
     },
     {
-      id: '4',
+      id: '4dvbn',
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 7,
       comment: true,
       comments: [
         {
-          id: 'sldjfeeslfjsld',
+          id: 'sldjfeeslfjttsld',
           comment: 'Awesome picture',
         }
       ],
@@ -92,14 +109,14 @@ export const ClubAssigned = ({props, nav}) => {
         'Sample Description below the image for representation purpose only',
     },
     {
-      id: '5',
+      id: '5kjl',
       name: 'Spyridon Kaperonis',
       rank:'Tennis Pro',
       likes: 1,
       comment: true,
       comments: [
         {
-          id: 'sldjfslyyfjsld',
+          id: 'stldjfslyyfjsld',
           comment: 'Awesome picture',
         }
       ],
@@ -143,15 +160,21 @@ export const ClubAssigned = ({props, nav}) => {
   }
 
   
-
+  function keyGenerator() {
+    const key = Math.random().toString(16).substring(2,8);
+    console.log('Key ', key);
+    return key;
+  }
   
     return (
       <View style={styles.container}>
         <ScrollView>
+          
           <FlatlistImageSlider props={flatlistImageSliderProps} />
           <ClubCoachesRosterCard props={clubCoachesRosterCardProps}/>
           <ClubPostInput props={clubPostInputProps}/>
           <ClubPostsScreen props={clubPostsScreenProps}/>
+          
         </ScrollView>
       </View>
     )
