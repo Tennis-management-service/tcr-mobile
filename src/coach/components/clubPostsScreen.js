@@ -33,9 +33,9 @@ const PopUpComments = ({comments, visibility, key}) => {
                 <View style={styles.modalBackground}>
                     
                     <View style={styles.modalContentContainer}>
-                        <Button title={'OFF'} onPress={() => setVisible(false)} />
+                        <Button title={'Back'} onPress={() => setVisible(false)} />
                         <FlatList 
-                            style={{flex:1, heigth: "90%", flexWrap: 'wrap', borderWidth: 1}}
+                            style={{flex:1, heigth: "90%", flexWrap: 'wrap'}}
                             data={comments}
                             renderItem={({item, index}) => {
                                 console.log('COMMENTITEM ', item);
@@ -47,7 +47,7 @@ const PopUpComments = ({comments, visibility, key}) => {
                             }}
                             keyExtractor={(item, index) => item.id}
                         />
-                        <View style={{width: "100%", height: 0.5, backgroundColor: 'blue'}}/>
+                        <View style={{width: "100%", height: 0.1, backgroundColor: 'black'}}/>
                         <View style={styles.inputButtonView}>
                             <TextInput 
                                 style={styles.modalTextInput}
@@ -62,7 +62,11 @@ const PopUpComments = ({comments, visibility, key}) => {
                                 // }}
                                 />
                             {/* Add Image of arrow to push post */}
-                            <Text>Hello</Text>
+                            <TouchableOpacity
+                                onPress={() => {}}
+                                style={styles.postButton}>
+                                <Text style={{fontSize: 30}}>^</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -171,6 +175,7 @@ const styles = StyleSheet.create({
 
     }, 
     modalContentContainer:{
+        flex: 2, 
         height: "100%",
         width: "90%",
         backgroundColor: 'white',
@@ -185,14 +190,28 @@ const styles = StyleSheet.create({
     }, 
     modalTextInput: {
         borderWidth: 1,
+        marginTop: 6, 
         margin: 4,
         width: "80%",
         borderRadius: 8, 
     },
     inputButtonView: {
-      flexDirection: 'row',
-      
-      alignItems: 'center',
+        
+        flexDirection: 'row',
+        height: 100, 
+
+        borderWidth: 1, 
+        justifyContent: 'space-around', 
+        alignItems: 'center',
+    },
+    postButton:{
+        height: 75,
+        width: 43, 
+        borderWidth: 1, 
+        borderRadius: 8, 
+        backgroundColor: '#99c0ff',
+        justifyContent: 'center', 
+        alignItems: 'center', 
     },
 })
 
