@@ -32,9 +32,9 @@ export const ClubScreen = ({navigation}) => {
 
 
   if(props){
-    return <ClubAssigned props={props} nav={navigation}/>
+    return <ClubAssigned key={0} props={props} nav={navigation}/>
   } else {
-    return <ClubNotAssigned props={props} nav={navigation}/>
+    return <ClubNotAssigned key={1} props={props} nav={navigation}/>
   }
  
 
