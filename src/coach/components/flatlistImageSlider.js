@@ -12,7 +12,6 @@ import { Indicator } from './indicator';
  const Children = ({
 
     item,
-    key,
     style,
     index,
     // onPress,
@@ -117,7 +116,7 @@ export const FlatlistImageSlider = ({props}) => {
 
 
   return (
-    <View key={1} style={styles.container}>
+    <View key={'a'} style={styles.container}>
     
 
         <FlatList
@@ -140,11 +139,11 @@ export const FlatlistImageSlider = ({props}) => {
             index,
           })}
           keyExtractor={(item, index) => 
-            item.id + index}
+            item.id}
           renderItem={({item, index}) => {
             console.log(item.image);
             return (
-              <Children style={ChildrenStyle} key={index} imageUrl={item.image} />
+              <Children style={ChildrenStyle} imageUrl={item.image} />
             )
           }}
           ItemSeparatorComponent={() => {
