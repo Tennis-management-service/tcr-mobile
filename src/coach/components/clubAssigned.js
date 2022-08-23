@@ -14,7 +14,7 @@ export const ClubAssigned = ({props, nav}) => {
   const DATA = [
     {
       id: '1dvds',
-      name: 'Spyridon Kaperonis',
+      name: 'some name',
       rank:'Director',
       likes: 5,
       comment: true,
@@ -55,7 +55,7 @@ export const ClubAssigned = ({props, nav}) => {
     },
     {
       id: '2xc',
-      name: 'Spyridon Kaperonis',
+      name: 'some name',
       rank:'Head Coach',
       likes: 4,
       comment: true,
@@ -73,7 +73,7 @@ export const ClubAssigned = ({props, nav}) => {
     },
     {
       id: '3zxzx',
-      name: 'Spyridon Kaperonis',
+      name: 'some name',
       rank:'Tennis Pro',
       likes: 2,
       comment: true,
@@ -92,7 +92,7 @@ export const ClubAssigned = ({props, nav}) => {
     },
     {
       id: '4dvbn',
-      name: 'Spyridon Kaperonis',
+      name: 'some name',
       rank:'Tennis Pro',
       likes: 7,
       comment: true,
@@ -110,7 +110,7 @@ export const ClubAssigned = ({props, nav}) => {
     },
     {
       id: '5kjl',
-      name: 'Spyridon Kaperonis',
+      name: 'some name',
       rank:'Tennis Pro',
       likes: 1,
       comment: true,
