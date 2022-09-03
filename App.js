@@ -18,42 +18,56 @@ import StudentTabNavigator from './src/student/navigation/StudentTabNavigator';
 import CoachTabNavigator from './src/coach/navigation/CoachTabNavigator';
 
 import { NativeBaseProvider } from 'native-base';
+import { LoginStackNavigation } from './src/login/navigation/LoginStackNavigation';
 
 
 
 function App(){
-
+  const loggedIn = false;
   const user = 'coach';
 
    return(
+    loggedIn ? 
 
-    Platform.OS === 'ios' ?
+      Platform.OS === 'ios' ?
 
-      user === 'student' ?
+        user === 'student' ?
+          <NavigationContainer>
+            <SafeAreaView>
+              <StudentTabNavigator/>
+            </SafeAreaView>
+          </NavigationContainer>
+
+          :
+          <NavigationContainer>
+          <SafeAreaView>
+            <CoachTabNavigator/>
+          </SafeAreaView>
+          </NavigationContainer>
+      
+      :
+
+        user === 'student' ?
+          <NavigationContainer>
+              <StudentTabNavigator/>
+          </NavigationContainer>
+        :
+          <NavigationContainer>
+            <CoachTabNavigator/>
+          </NavigationContainer>
+      
+    :
+
+      Platform.OS ==='ios' ?
         <NavigationContainer>
           <SafeAreaView>
-            <StudentTabNavigator/>
+            <LoginStackNavigation/>
           </SafeAreaView>
         </NavigationContainer>
-
-        :
-        <NavigationContainer>
-        <SafeAreaView>
-          <CoachTabNavigator/>
-        </SafeAreaView>
-        </NavigationContainer>
-     
-      :
-
-      user === 'student' ?
-        <NavigationContainer>
-            <StudentTabNavigator/>
-        </NavigationContainer>
       :
         <NavigationContainer>
-          <CoachTabNavigator/>
+          <LoginStackNavigation/>
         </NavigationContainer>
-    
    );  
  }
 
