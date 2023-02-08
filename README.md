@@ -10,3 +10,8 @@ The user interface of tennis management service has as a general purpose to conn
 ### Technologies
 
 * [react-native-calendars](https://github.com/wix/react-native-calendars)
+
+
+### Designs
+
+- [Drawio designs](https://drive.google.com/file/d/1jIuOfA7xcY4fpueGvghKbgNiwLgviIoF/view?usp=sharing)
